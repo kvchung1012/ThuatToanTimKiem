@@ -1,0 +1,13 @@
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.exe
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.deps.json
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.runtimeconfig.json
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.runtimeconfig.dev.json
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.dll
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\bin\Debug\netcoreapp3.1\FindWayTesst.pdb
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.csprojAssemblyReference.cache
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.AssemblyInfoInputs.cache
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.AssemblyInfo.cs
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.csproj.CoreCompileInputs.cache
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.dll
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.pdb
+C:\Users\Delll\source\repos\FindWayTesst\FindWayTesst\obj\Debug\netcoreapp3.1\FindWayTesst.genruntimeconfig.cache
