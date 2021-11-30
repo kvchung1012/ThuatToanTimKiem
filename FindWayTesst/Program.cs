@@ -13,6 +13,8 @@ namespace FindWayTesst
             findWay.BFS();
             findWay.BestFirstSearch();
             findWay.LeoDoi();
+            findWay.ASao();
+            findWay.NhanhCan();
         }
     }
 }

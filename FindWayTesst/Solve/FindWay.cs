@@ -81,7 +81,7 @@ namespace FindWayTesst.Solve
                             pathRes += Start;
                             break;
                         }
-                        pathRes += finded+"<--";
+                        pathRes += finded + "<--";
                         finded = path.FirstOrDefault(x => x.End.Name == finded).Start.Name;
                     }
                     printTable.PrintRow(new string[] { End, "TTKT", pathRes });
@@ -89,7 +89,7 @@ namespace FindWayTesst.Solve
                     break;
                 }
 
-                var nodeNext = NodeLinks.Where(x => x.Start.Name == currentNode.Name).OrderBy(x=>x.End.Name);
+                var nodeNext = NodeLinks.Where(x => x.Start.Name == currentNode.Name).OrderBy(x => x.End.Name);
                 foreach (var node in nodeNext)
                 {
                     path.Add(new NodeLink()
@@ -100,7 +100,7 @@ namespace FindWayTesst.Solve
                     });
                     stack.Push(Nodes.FirstOrDefault(x => x.Name == node.End.Name));
                 }
-                
+
                 // cập nhật list L
                 string listL = "";
                 stack.ToList().ForEach(x => listL += x.Name + ",");
@@ -108,9 +108,9 @@ namespace FindWayTesst.Solve
                 // trạng thái kề
 
                 string ttk = "";
-                nodeNext.ToList().OrderBy(x=>x.End.Name).ToList().ForEach(x => ttk += x.End.Name + ",");
+                nodeNext.ToList().OrderBy(x => x.End.Name).ToList().ForEach(x => ttk += x.End.Name + ",");
 
-                printTable.PrintRow(new string[] { currentNode.Name,ttk , listL });
+                printTable.PrintRow(new string[] { currentNode.Name, ttk, listL });
                 printTable.PrintLine();
             }
             printTable.Close();
@@ -219,12 +219,12 @@ namespace FindWayTesst.Solve
                 // sắp xếp lại danh sách L
                 list = list.OrderBy(x => x.Weight).ToList();
                 string listL = "";
-                list.ForEach(x => listL += x.Name+x.Weight + ",");
+                list.ForEach(x => listL += x.Name + x.Weight + ",");
 
                 string ttk = "";
-                nodeNext.ToList().ForEach(x => ttk += x.End.Name+x.End.Weight + ",");
+                nodeNext.ToList().ForEach(x => ttk += x.End.Name + x.End.Weight + ",");
 
-                printTable.PrintRow(new string[] { currentNode.Name+currentNode.Weight, ttk, listL });
+                printTable.PrintRow(new string[] { currentNode.Name + currentNode.Weight, ttk, listL });
                 printTable.PrintLine();
             }
             printTable.Close();
@@ -234,7 +234,7 @@ namespace FindWayTesst.Solve
         public void LeoDoi()
         {
             PrintTable printTable = new PrintTable(@"../../../File/LeoDoi.txt");
-            printTable.PrintRow(new string[] { "Đỉnh", "TTK","L1", "L" });
+            printTable.PrintRow(new string[] { "Đỉnh", "TTK", "L1", "L" });
             printTable.PrintLine();
             var path = new List<NodeLink>();
             var list = new List<Node>();
@@ -259,7 +259,7 @@ namespace FindWayTesst.Solve
                         pathRes += finded + "<--";
                         finded = path.FirstOrDefault(x => x.End.Name == finded).Start.Name;
                     }
-                    printTable.PrintRow(new string[] { End, "TTKT","", pathRes });
+                    printTable.PrintRow(new string[] { End, "TTKT", "", pathRes });
                     printTable.PrintLine();
                     break;
                 }
@@ -281,8 +281,8 @@ namespace FindWayTesst.Solve
 
 
                 // sắp xếp lại danh sách L
-                list.InsertRange(0,subList);
-                
+                list.InsertRange(0, subList);
+
                 string listL = "";
                 list.ForEach(x => listL += x.Name + x.Weight + ",");
 
@@ -292,7 +292,197 @@ namespace FindWayTesst.Solve
                 string L1 = "";
                 subList.ToList().ForEach(x => L1 += x.Name + x.Weight + ",");
 
-                printTable.PrintRow(new string[] { currentNode.Name + currentNode.Weight, ttk,L1, listL });
+                printTable.PrintRow(new string[] { currentNode.Name + currentNode.Weight, ttk, L1, listL });
+                printTable.PrintLine();
+            }
+            printTable.Close();
+        }
+
+
+        public void ASao()
+        {
+            PrintTable printTable = new PrintTable(@"../../../File/ASao.txt");
+            printTable.PrintRow(new string[] { "TT", "TTK", "k(u,v)", "h(v)", "g(v)", "f(v)", "Dsach L" });
+            printTable.PrintLine();
+
+            var list = new List<NodeAStar>(); // list duyệt đỉnh
+            list.Add(new NodeAStar()
+            {
+                Name = Nodes.FirstOrDefault(x => x.Name == Start).Name,
+                Depth = 0,
+                Weight = Nodes.FirstOrDefault(x => x.Name == Start).Weight,
+                NewWeight = 0
+            }); // đỉnh đầu tiên
+
+            var listStatus = new List<NodeLinkAStar>();
+
+            while (list.Count() > 0)
+            {
+                var currentNode = list.FirstOrDefault();
+                list.Remove(currentNode);
+                // đúng điểm cần tìm
+                var checkNode = currentNode;
+                if (currentNode.Name == End)
+                {
+                    // in ra đường đi tại đây
+                    var finded = End;
+                    string pathRes = "";
+                    while (true)
+                    {
+                        if (finded == Start)
+                        {
+                            pathRes += Start;
+                            break;
+                        }
+                        pathRes += finded + "<--";
+                        finded = listStatus.Last(x => x.End.Name == finded).Start.Name;
+                    }
+                    printTable.PrintRow(new string[] { End, pathRes });
+                    printTable.PrintLine();
+                    break;
+                }
+
+                var nodeNext = NodeLinks.Where(x => x.Start.Name == currentNode.Name).OrderBy(x => x.End.Name);
+
+                foreach (var node in nodeNext)
+                {
+                    listStatus.Add(new NodeLinkAStar()
+                    {
+                        Start = currentNode,
+                        End = node.End,
+                        Length = node.Length,
+                        g = node.Length + currentNode.Depth,
+                        f = node.Length + currentNode.Depth + node.End.Weight
+                    });
+                }
+
+                // danh sách vừa thêm
+                foreach (var item in listStatus.GetRange(listStatus.Count() - nodeNext.Count(), nodeNext.Count()))
+                {
+                    list.Add(new NodeAStar()
+                    {
+                        Name = item.End.Name,
+                        Depth = item.g,
+                        Weight = item.End.Weight,
+                        NewWeight = item.f
+                    });
+                }
+                list = list.OrderBy(x => x.NewWeight).ToList();
+
+
+                // thêm vòng for in cho chất lượng
+                var firstLine = true;
+                foreach (var item in listStatus.GetRange(listStatus.Count() - nodeNext.Count(), nodeNext.Count()))
+                {
+                    if (firstLine)
+                    {
+                        string listL = "";
+                        list.ForEach(x => listL += x.Name + x.NewWeight + ",");
+                        printTable.PrintRow(new string[] { item.Start.Name, item.End.Name, item.Length.ToString(), item.End.Weight.ToString(), item.g.ToString(), item.f.ToString(), listL });
+                        firstLine = false;
+                    }
+                    else
+                    {
+                        printTable.PrintRow(new string[] { "", item.End.Name, item.Length.ToString(), item.End.Weight.ToString(), item.g.ToString(), item.f.ToString(), "" });
+                        firstLine = false;
+                    }
+                }
+                printTable.PrintLine();
+            }
+            printTable.Close();
+        }
+
+
+        public void NhanhCan()
+        {
+            int cost = int.MaxValue;
+            PrintTable printTable = new PrintTable(@"../../../File/NhanhCan.txt");
+            printTable.PrintRow(new string[] { "TT", "TTK", "k(u,v)", "h(v)", "g(v)", "f(v)", "Dsach L1", "Dsach L" });
+            printTable.PrintLine();
+
+            var list = new List<NodeAStar>(); // list duyệt đỉnh
+            list.Add(new NodeAStar()
+            {
+                Name = Nodes.FirstOrDefault(x => x.Name == Start).Name,
+                Depth = 0,
+                Weight = Nodes.FirstOrDefault(x => x.Name == Start).Weight,
+                NewWeight = 0
+            }); // đỉnh đầu tiên
+
+            var listStatus = new List<NodeLinkAStar>();
+
+            while (list.Count() > 0)
+            {
+                var currentNode = list.FirstOrDefault();
+                list.Remove(currentNode);
+                // đúng điểm cần tìm
+                var checkNode = currentNode;
+                if (currentNode.Name == End)
+                {
+                    if(currentNode.NewWeight <= cost)
+                    {
+                        cost = currentNode.NewWeight;
+                        string listL = "";
+                        list.ForEach(x => listL += x.Name + x.NewWeight + ",");
+                        printTable.PrintRow(new string[] { End, "Tạm, độ dài " + currentNode.NewWeight, listL });
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                var nodeNext = NodeLinks.Where(x => x.Start.Name == currentNode.Name).OrderBy(x => x.End.Name);
+
+                foreach (var node in nodeNext)
+                {
+                    listStatus.Add(new NodeLinkAStar()
+                    {
+                        Start = currentNode,
+                        End = node.End,
+                        Length = node.Length,
+                        g = node.Length + currentNode.Depth,
+                        f = node.Length + currentNode.Depth + node.End.Weight
+                    });
+                }
+
+                // danh sách vừa thêm
+                var currentList = new List<NodeAStar>();
+                foreach (var item in listStatus.GetRange(listStatus.Count() - nodeNext.Count(), nodeNext.Count()))
+                {
+                    currentList.Add(new NodeAStar()
+                    {
+                        Name = item.End.Name,
+                        Depth = item.g,
+                        Weight = item.End.Weight,
+                        NewWeight = item.f
+                    });
+                }
+
+                list.InsertRange(0, currentList.OrderBy(x => x.NewWeight).ToList());
+
+
+                // thêm vòng for in cho chất lượng
+                var firstLine = true;
+                foreach (var item in listStatus.GetRange(listStatus.Count() - nodeNext.Count(), nodeNext.Count()))
+                {
+                    if (firstLine)
+                    {
+                        string listL = "";
+                        list.ForEach(x => listL += x.Name + x.NewWeight + ",");
+
+                        string list1 = "";
+                        currentList.OrderBy(x => x.NewWeight).ToList().ForEach(x => list1 += x.Name + x.NewWeight + ",");
+
+                        printTable.PrintRow(new string[] { item.Start.Name, item.End.Name, item.Length.ToString(), item.End.Weight.ToString(), item.g.ToString(), item.f.ToString(), list1, listL });
+                        firstLine = false;
+                    }
+                    else
+                    {
+                        printTable.PrintRow(new string[] { "", item.End.Name, item.Length.ToString(), item.End.Weight.ToString(), item.f.ToString(), item.f.ToString(), "", "" });
+                        firstLine = false;
+                    }
+                }
                 printTable.PrintLine();
             }
             printTable.Close();
