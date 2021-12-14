@@ -16,9 +16,14 @@ namespace FindWayTesst.Solve
 
         public CutAlpha()
         {
-            dics.Add("b", new List<int>() { 3, 12, 8 });
-            dics.Add("c", new List<int>() { 2, 4, 6 });
-            dics.Add("d", new List<int>() { 14, 5, 2 });
+            dics.Add("h", new List<int>() { 8, 23 });
+            dics.Add("i", new List<int>() { -47, 28 });
+            dics.Add("j", new List<int>() { -30, -37 });
+            dics.Add("k", new List<int>() { 3, -41 });
+            dics.Add("l", new List<int>() { -19, 4 });
+            dics.Add("m", new List<int>() { -49, 4 });
+            dics.Add("n", new List<int>() { 43, 45 });
+            dics.Add("o", new List<int>() { -26, -14 });
 
 
             nodes.Add(new CutAlphaModel()
