@@ -1,0 +1,15 @@
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.exe
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.deps.json
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.runtimeconfig.json
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.runtimeconfig.dev.json
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.dll
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\CutAlpha.pdb
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.csprojAssemblyReference.cache
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.AssemblyInfoInputs.cache
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.AssemblyInfo.cs
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.csproj.CoreCompileInputs.cache
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.csproj.CopyComplete
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.dll
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.pdb
+C:\Users\Delll\source\repos\FindWayTesst\CutAlpha\obj\Debug\netcoreapp3.1\CutAlpha.genruntimeconfig.cache
