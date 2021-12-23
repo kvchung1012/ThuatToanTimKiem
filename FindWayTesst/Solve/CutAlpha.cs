@@ -8,7 +8,7 @@ namespace FindWayTesst.Solve
 {
     public class CutAlpha
     {
-        public bool MAX = true;
+        public bool MAX = false;
         public List<CutAlphaModel> nodes { get; set; } = new List<CutAlphaModel>();
 
         Dictionary<string, List<int>> dics = new Dictionary<string, List<int>>();
@@ -16,14 +16,13 @@ namespace FindWayTesst.Solve
 
         public CutAlpha()
         {
-            dics.Add("h", new List<int>() { 8, 23 });
-            dics.Add("i", new List<int>() { -47, 28 });
-            dics.Add("j", new List<int>() { -30, -37 });
-            dics.Add("k", new List<int>() { 3, -41 });
-            dics.Add("l", new List<int>() { -19, 4 });
-            dics.Add("m", new List<int>() { -49, 4 });
-            dics.Add("n", new List<int>() { 43, 45 });
-            dics.Add("o", new List<int>() { -26, -14 });
+            dics.Add("e", new List<int>() { 2, 6 });
+            dics.Add("f", new List<int>() { 5, 6,3 });
+            dics.Add("c", new List<int>() { 7, 8 });
+            dics.Add("g", new List<int>() { 9, 1, 3 });
+            dics.Add("h", new List<int>() { 5,2, 4 });
+            dics.Add("i", new List<int>() { 7 });
+            dics.Add("j", new List<int>() { 9, 4 });
 
 
             nodes.Add(new CutAlphaModel()

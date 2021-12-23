@@ -1,26 +1,23 @@
-﻿A B
-A 14
-C 15
-D 6
-E 8
-F 7
-G 12
-H 10
-K 2
-I 4
-B 0
-A C 9
-A D 7
-A E 13
-A F 20
-C H 6
-D H 8
-D E 4
-E K 4
-E I 3
-F G 4
-F I 6
-H K 5
-K B 6
-I K 9
-I B 5
+﻿A K
+A 10
+D 10
+C 5
+E 10
+B 5
+H 3
+F 3
+G 3
+K 0
+A D 5
+D E 2
+E C 6
+E B 5
+B G 4
+B K 5
+A C 5
+C H 3
+C F 2
+C B 3
+F G 3
+G K 3
+H K 3

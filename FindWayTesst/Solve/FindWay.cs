@@ -217,7 +217,7 @@ namespace FindWayTesst.Solve
                     list.Add(Nodes.FirstOrDefault(x => x.Name == node.End.Name));
                 }
                 // sắp xếp lại danh sách L
-                list = list.OrderBy(x => x.Weight).ToList();
+                list = list.OrderBy(x => x.Weight).ThenBy(x=>x.Name).ToList();
                 string listL = "";
                 list.ForEach(x => listL += x.Name + x.Weight + ",");
 
@@ -277,7 +277,7 @@ namespace FindWayTesst.Solve
                     subList.Add(Nodes.FirstOrDefault(x => x.Name == node.End.Name));
                 }
 
-                subList = subList.OrderBy(x => x.Weight).ToList();
+                subList = subList.OrderBy(x => x.Weight).ThenBy(x=>x.Name).ToList();
 
 
                 // sắp xếp lại danh sách L
@@ -367,7 +367,7 @@ namespace FindWayTesst.Solve
                         NewWeight = item.f
                     });
                 }
-                list = list.OrderBy(x => x.NewWeight).ToList();
+                list = list.OrderBy(x => x.NewWeight).ThenBy(x=>x.Name).ToList();
 
 
                 // thêm vòng for in cho chất lượng
@@ -459,7 +459,7 @@ namespace FindWayTesst.Solve
                     });
                 }
 
-                list.InsertRange(0, currentList.OrderBy(x => x.NewWeight).ToList());
+                list.InsertRange(0, currentList.OrderBy(x => x.NewWeight).ThenBy(x=>x.Name).ToList());
 
 
                 // thêm vòng for in cho chất lượng
